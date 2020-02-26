@@ -13,6 +13,7 @@ class StudentInfo
     private $quote;
     private $quoteAuthor;
     private $preferredLanguage;
+    private $created_at;
 
     /**
      * StudentInfo constructor.
@@ -41,7 +42,27 @@ class StudentInfo
         $this->quote = $quote;
         $this->quoteAuthor = $quoteAuthor;
         $this->preferredLanguage = $preferredLanguage;
+     //  $this->created_at = date("Y-m-d H:i");
+
+
     }
+
+    /**
+     * @return DateTime
+     */
+    public function getCreatedAt(): DateTime
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param DateTime $created_at
+     */
+    public function setCreatedAt(DateTime $created_at): void
+    {
+        $this->created_at = $created_at;
+    }
+
 
     /**
      * @return string

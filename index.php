@@ -1,25 +1,49 @@
 <?php
 declare(strict_types=1);
-
+session_start();
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 require 'Controller/Connection.php';
 require 'Controller/InsertController.php';
+require 'Controller/ProfileController.php';
+require 'Controller/UserInfoController.php';
 
 require 'Model/StudentInfo.php';
 
 $connection = new Connection();
-$connectionStatus = $connection->checkConnection() ;
+$connectionStatus = $connection->checkConnection();
 
-if ($connectionStatus == true ){
-    require 'View/insert.php';
-    //$connection->getPdo();
-    $insert = new insertController();
-    $insert->render($_POST ,$connection);
-}else{
-    echo $connectionStatus;
+
+//load different controller here based on user input
+//_get user info = true -> load the user controller
+//
+if (isset($_GET['showAllData'])) {
+    $userInfoController = new UserInfoController();
+    $userInfoController->render();
 }
+
+if (isset($_GET['user'])) {
+    $profileController = new ProfileController();
+    $profileController->render();
+}
+
+if (isset($_GET['homePage'])) {
+    $insert = new insertController();
+    $insert->render($_POST, $connection);
+ //   require 'View/insert.php';
+
+}
+
+if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePage'])){
+    if ($connectionStatus == true) {
+        $insert = new insertController();
+        $insert->render($_POST, $connection);
+    } else {
+        echo $connectionStatus;
+    }
+}
+
 
 

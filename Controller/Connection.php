@@ -12,7 +12,7 @@ class Connection
     /**
      * @return mixed
      */
-    public function getPdo()
+    public function getPdo() : PDO
     {
         return $this->pdo;
     }
@@ -34,10 +34,9 @@ class Connection
 
     function checkConnection()
     {
-        $this->openConnection();
         try {
-            //  $returnValue = openConnection();
-            // set the PDO error mode to exception
+            $this->openConnection();
+
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return true;
 
@@ -48,17 +47,19 @@ class Connection
 
     function insertData(StudentInfo $studentInfo)
     {
-        echo $studentInfo->getFirstName();
 
-        $sql = "INSERT INTO student (first_name,last_name,username,linkedin , github , email, avatar, video ,quote, quote_author , preferred_language) VALUES ('$studentInfo->getFirstName()','$studentInfo->getLastName()','$studentInfo->getUserName()','$studentInfo->getLinkedin()','$studentInfo->getGithub()','$studentInfo->getEmail()', '$studentInfo->getAvatar()','$studentInfo->getVideo()','$studentInfo->getQuote()','$studentInfo->getQuoteAuthor()','$studentInfo->getPreferredLanguage()' )";
+        try {
+            $sql = "INSERT INTO student (first_name, last_name, username, linkedin, github, email, preferred_language, avatar, video, quote, quote_author) VALUES (:firstName, :lastName, :username, :linkedin, :github, :email, :preferred_language, :avatar , :video ,:quote , :quote_author)";
 
+            $paraArr = array('firstName' => $studentInfo->getFirstName(), 'lastName' => $studentInfo->getLastName(), 'username' => $studentInfo->getUserName(), 'linkedin' => $studentInfo->getLinkedin(), 'github' => $studentInfo->getGithub(), 'email' => $studentInfo->getEmail(), 'preferred_language' => $studentInfo->getPreferredLanguage(), 'avatar' => $studentInfo->getAvatar(), 'video' => $studentInfo->getVideo(), 'quote' => $studentInfo->getQuote(), 'quote_author' => $studentInfo->getQuoteAuthor());
 
-        if ($this->pdo->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $this->pdo->error;
+            $this->pdo->prepare($sql)->execute($paraArr);
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
-        $this->pdo->close();
+
+
     }
+
 }
 

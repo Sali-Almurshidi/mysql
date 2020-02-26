@@ -39,14 +39,24 @@
     <input type="text" id="quote-author" name="quote-author" placeholder="quote author " required><br>
 
     <label>preferred language:</label><br>
-    <input type="text" id="preferred-language" name="preferred-language" placeholder="preferred language " required><br>
+   <!-- <input type="text" id="preferred-language" name="preferred-language" placeholder="preferred language " required><br>-->
+    <select name="preferred-language">
+        <option value="be">be</option>
+        <option value="de">de</option>
+        <option value="en">en</option>
+        <option value="fr">fr</option>
+        <option value="ru">ru</option>
+    </select>
 
 
     <br>
     <button value="Submit" name="add"> ADD</button>
 
 </form>
-
+<br/>
+<form method="get">
+    <button value="Submit" onclick="" name="showAllData"> show all data</button>
+</form>
 
 </body>
 </html>
