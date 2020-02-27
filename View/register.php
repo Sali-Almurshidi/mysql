@@ -56,6 +56,7 @@
 <br/>
 <form method="get">
     <button value="Submit" onclick="" name="showAllData"> show all data</button>
+    <button value="Submit" onclick="" name="loginPage"> Login</button>
 </form>
 
 </body>

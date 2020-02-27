@@ -9,6 +9,7 @@ require 'Controller/Connection.php';
 require 'Controller/InsertController.php';
 require 'Controller/ProfileController.php';
 require 'Controller/UserInfoController.php';
+require 'Controller/loginController.php';
 
 require 'Model/StudentInfo.php';
 
@@ -18,7 +19,7 @@ $connectionStatus = $connection->checkConnection();
 
 //load different controller here based on user input
 //_get user info = true -> load the user controller
-//
+
 if (isset($_GET['showAllData'])) {
     $userInfoController = new UserInfoController();
     $userInfoController->render();
@@ -29,14 +30,18 @@ if (isset($_GET['user'])) {
     $profileController->render();
 }
 
+if (isset($_GET['loginPage'])) {
+    $loginController = new loginController();
+    $loginController->render();
+}
+
 if (isset($_GET['homePage'])) {
     $insert = new insertController();
     $insert->render($_POST, $connection);
- //   require 'View/insert.php';
-
 }
 
-if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePage'])){
+if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePage']) &&
+        !isset($_GET['loginPage'])){
     if ($connectionStatus == true) {
         $insert = new insertController();
         $insert->render($_POST, $connection);
@@ -45,5 +50,13 @@ if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePa
     }
 }
 
+/*if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePage'])){
+    if ($connectionStatus == true) {
+        $login = new loginController();
+        $login->render($_POST, $connection);
+    } else {
+        echo $connectionStatus;
+    }
+}*/
 
 
