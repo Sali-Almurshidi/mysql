@@ -14,6 +14,7 @@ class StudentInfo
     private $quoteAuthor;
     private $preferredLanguage;
     private $created_at;
+    private $password;
 
     /**
      * StudentInfo constructor.
@@ -29,7 +30,7 @@ class StudentInfo
      * @param $quoteAuthor
      * @param $preferredLanguage
      */
-    public function __construct(string $firstName, string $lastName, string $userName,string $linkedin, string $github,string $email, string $avatar,string $video, string $quote, string $quoteAuthor,string $preferredLanguage)
+    public function __construct(string $firstName, string $lastName, string $userName,string $linkedin, string $github,string $email, string $avatar,string $video, string $quote, string $quoteAuthor,string $preferredLanguage , string $password)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -42,10 +43,21 @@ class StudentInfo
         $this->quote = $quote;
         $this->quoteAuthor = $quoteAuthor;
         $this->preferredLanguage = $preferredLanguage;
+        $this->password= $password;
+
      //  $this->created_at = date("Y-m-d H:i");
 
 
     }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
 
     /**
      * @return DateTime

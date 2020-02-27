@@ -47,13 +47,18 @@
         <option value="fr">fr</option>
         <option value="ru">ru</option>
     </select>
+    <br/>
+    <label>Password:</label><br>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required><br>
 
+    <label>Confirm Password:</label><br>
+    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required><br>
 
     <br>
-    <button value="Submit" name="add"> ADD</button>
+    <button value="Submit" name="add"> register </button>
 
 </form>
-<br/>
+<br/><br/>
 <form method="get">
     <button value="Submit" onclick="" name="showAllData"> show all data</button>
     <button value="Submit" onclick="" name="loginPage"> Login</button>

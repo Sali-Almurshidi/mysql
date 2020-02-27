@@ -49,9 +49,9 @@ class Connection
     {
 
         try {
-            $sql = "INSERT INTO student (first_name, last_name, username, linkedin, github, email, preferred_language, avatar, video, quote, quote_author) VALUES (:firstName, :lastName, :username, :linkedin, :github, :email, :preferred_language, :avatar , :video ,:quote , :quote_author)";
+            $sql = "INSERT INTO student (first_name, last_name, username, linkedin, github, email, preferred_language, avatar, video, quote, quote_author, password) VALUES (:firstName, :lastName, :username, :linkedin, :github, :email, :preferred_language, :avatar , :video ,:quote , :quote_author, :password)";
 
-            $paraArr = array('firstName' => $studentInfo->getFirstName(), 'lastName' => $studentInfo->getLastName(), 'username' => $studentInfo->getUserName(), 'linkedin' => $studentInfo->getLinkedin(), 'github' => $studentInfo->getGithub(), 'email' => $studentInfo->getEmail(), 'preferred_language' => $studentInfo->getPreferredLanguage(), 'avatar' => $studentInfo->getAvatar(), 'video' => $studentInfo->getVideo(), 'quote' => $studentInfo->getQuote(), 'quote_author' => $studentInfo->getQuoteAuthor());
+            $paraArr = array('firstName' => $studentInfo->getFirstName(), 'lastName' => $studentInfo->getLastName(), 'username' => $studentInfo->getUserName(), 'linkedin' => $studentInfo->getLinkedin(), 'github' => $studentInfo->getGithub(), 'email' => $studentInfo->getEmail(), 'preferred_language' => $studentInfo->getPreferredLanguage(), 'avatar' => $studentInfo->getAvatar(), 'video' => $studentInfo->getVideo(), 'quote' => $studentInfo->getQuote(), 'quote_author' => $studentInfo->getQuoteAuthor(),'password'=>$studentInfo->getPassword() );
 
             $this->pdo->prepare($sql)->execute($paraArr);
         } catch (Exception $e) {

@@ -20,13 +20,25 @@ class insertController
                 $quote = $POST['quote'];
                 $quoteAuthor = $POST['quote-author'];
                 $preferredLanguage = $POST['preferred-language'];
+                $password = $POST['password'];
+                $confirmPassword = $POST['confirmPassword'];
 
-                $userData = new StudentInfo($firstName, $lastName, $userName,
-                    $linkedin, $github, $email,
-                    $avatar, $video, $quote, $quoteAuthor, $preferredLanguage);
+                if($password ===  $confirmPassword){
 
-                $connection->insertData($userData);
-                require 'View/register.php';
+                    $password = password_hash($password, PASSWORD_DEFAULT);
+
+                    $userData = new StudentInfo($firstName, $lastName, $userName,
+                        $linkedin, $github, $email,
+                        $avatar, $video, $quote, $quoteAuthor, $preferredLanguage , $password);
+
+                    $connection->insertData($userData);
+                    require 'View/userPage.php';
+                }else{
+                    require 'View/register.php';
+                    echo "the password conformation does not match ";
+
+                }
+
             }
 
         } else {

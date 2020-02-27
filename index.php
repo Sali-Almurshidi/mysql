@@ -50,13 +50,5 @@ if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePa
     }
 }
 
-/*if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePage'])){
-    if ($connectionStatus == true) {
-        $login = new loginController();
-        $login->render($_POST, $connection);
-    } else {
-        echo $connectionStatus;
-    }
-}*/
 
 
