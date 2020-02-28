@@ -12,8 +12,14 @@ class loginController
         if (isset($_POST['login'])) {
 
             $this->email = $_POST['email'];
-            $this->password = $_POST['password'];
-            $this->getinput();
+            if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+                require 'View/login.php';
+                echo  "Invalid email format";
+            }else{
+                $this->password = $_POST['password'];
+                $this->getinput();
+            }
+
 
         } else {
             require 'View/login.php';
