@@ -46,9 +46,7 @@ class loginController
         $sql = "SELECT password FROM student WHERE email = '$this->email'";
         $result = $this->pdo->query($sql);
         $dbPassword = $result->fetch();
-        var_dump($dbPassword);
         if(password_verify($this->password, $dbPassword['password'])){
-            //$this->password = password_hash($this->password, PASSWORD_DEFAULT);
             $sql = "SELECT id FROM student WHERE email = '$this->email'";
             $result = $this->pdo->query($sql);
             return $result->fetch();

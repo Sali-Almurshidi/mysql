@@ -10,15 +10,12 @@ require 'Controller/InsertController.php';
 require 'Controller/ProfileController.php';
 require 'Controller/UserInfoController.php';
 require 'Controller/loginController.php';
+require 'Controller/UserPageController.php';
 
 require 'Model/StudentInfo.php';
 
 $connection = new Connection();
 $connectionStatus = $connection->checkConnection();
-
-
-//load different controller here based on user input
-//_get user info = true -> load the user controller
 
 if (isset($_GET['showAllData'])) {
     $userInfoController = new UserInfoController();
