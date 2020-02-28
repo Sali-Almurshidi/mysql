@@ -10,6 +10,14 @@
 
 $users = new UserPageController();
 $storedInformation = $users->getUserInformation();
+//$users->render();
+
+
+/*if (isset($_POST['deleteAccount'])) {
+    $users->deleteAccount();
+}else{
+
+}*/
 
 ?>
 <table>
@@ -23,7 +31,7 @@ $storedInformation = $users->getUserInformation();
     </tr>
     <tr>
         <td>Last name:</td>
-        <td><?php echo $storedInformation['last_name']?></td>
+        <td><?php echo $storedInformation['last_name'] ?></td>
     </tr>
     <tr>
         <td>Email:</td>
@@ -44,10 +52,11 @@ $storedInformation = $users->getUserInformation();
     </tr>
 </table>
 
+
 <form method="get">
-    <button value="Submit" onclick="" name="login"> edit information </button>
+    <button value="Submit" onclick="" name="login"> edit information</button>
     <button value="Submit" onclick="" name="homePage"> back to home page</button>
-    <button value="Submit" onclick="" name="deleteAccount"> Delete this account </button>
+    <button onclick="" name="deleteAccount"> Delete this account</button>
 </form>
 
 </body>

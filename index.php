@@ -37,6 +37,20 @@ if (isset($_GET['homePage'])) {
     $insert->render($_POST, $connection);
 }
 
+if (isset($_GET['deleteAccount'])) {
+    $deleteUser = new UserPageController();
+    $result = $deleteUser->deleteAccount();
+    if($result == true){
+        $loginController = new loginController();
+        $loginController->render();
+    }else{
+        require 'View/userPage.php';
+        echo "fail to delete this account";
+    }
+
+}
+
+
 if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePage']) &&
         !isset($_GET['loginPage'])){
     if ($connectionStatus == true) {
