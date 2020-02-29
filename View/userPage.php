@@ -10,14 +10,8 @@
 
 $users = new UserPageController();
 $storedInformation = $users->getUserInformation();
-//$users->render();
 
-
-/*if (isset($_POST['deleteAccount'])) {
-    $users->deleteAccount();
-}else{
-
-}*/
+$_SESSION['username']= $storedInformation['username']
 
 ?>
 <table>
@@ -54,7 +48,7 @@ $storedInformation = $users->getUserInformation();
 
 
 <form method="get">
-    <button value="Submit" onclick="" name="login"> edit information</button>
+    <button value="Submit" onclick="" name="editInformation"> edit information</button>
     <button value="Submit" onclick="" name="homePage"> back to home page</button>
     <button onclick="" name="deleteAccount"> Delete this account</button>
 </form>

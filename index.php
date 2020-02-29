@@ -11,6 +11,8 @@ require 'Controller/ProfileController.php';
 require 'Controller/UserInfoController.php';
 require 'Controller/loginController.php';
 require 'Controller/UserPageController.php';
+require 'Controller/userEditPasswordController.php';
+require 'Controller/editUserInformationController.php';
 
 require 'Model/StudentInfo.php';
 
@@ -37,6 +39,21 @@ if (isset($_GET['homePage'])) {
     $insert->render($_POST, $connection);
 }
 
+/*if (isset($_GET['confirmChange'])) {
+    $change = new editUserInformationController();
+    $insert->render($_POST, $connection);
+}
+
+if (isset($_GET['doneChangePassword'])) {
+    $change = new editUserInformationController();
+    $insert->render($_POST, $connection);
+}*/
+
+if (isset($_GET['editInformation'])) {
+    $editInformation = new editUserInformationController();
+    $editInformation->render();
+}
+
 if (isset($_GET['deleteAccount'])) {
     $deleteUser = new UserPageController();
     $result = $deleteUser->deleteAccount();
@@ -52,7 +69,7 @@ if (isset($_GET['deleteAccount'])) {
 
 
 if(!isset($_GET['showAllData']) && !isset($_GET['user']) && !isset($_GET['homePage']) &&
-        !isset($_GET['loginPage'])){
+        !isset($_GET['loginPage']) && !(isset($_GET['editInformation']))  ){
     if ($connectionStatus == true) {
         $insert = new insertController();
         $insert->render($_POST, $connection);

@@ -22,7 +22,7 @@ class Connection
         // Try to figure out what these should be for you
         $this->dbhost = "127.0.0.1";
         $this->dbuser = "becode";
-        $this->dbpass = "becode";
+        $this->dbpass = "******";
         $this->dbname = "becode";
         // Try to understand what happens here
         $this->pdo = new PDO('mysql:host=' . $this->dbhost . ' ;dbname='
